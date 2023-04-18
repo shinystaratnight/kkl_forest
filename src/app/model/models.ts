@@ -11,3 +11,4 @@ export * from './folderUpdateInfo';
 export * from './objectIdInfo';
 export * from './objectIdOutInfo';
 export * from './searchContentInfo';
+export * from './objectItem';

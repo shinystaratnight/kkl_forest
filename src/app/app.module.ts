@@ -12,6 +12,7 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { ModalComponent } from './components/modal/modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { SearchComponent } from './components/search/search.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { SearchComponent } from './components/search/search.component';
     MaterialDesignModule,
     BrowserAnimationsModule,
     MatDialogModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

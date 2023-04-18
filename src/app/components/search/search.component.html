@@ -4,8 +4,8 @@
       <div class="files-table">
         <div class="files-table__header">
           <div class="files-table__header-item arrow">
-            <p>סוג</p>
-            <div class="files-table__header-item-dropdown active">
+            <p (click)="sortBy('type')">סוג</p>
+            <div class="files-table__header-item-dropdown">
               <div class="files-table__header-item__dropdown-body">
                 <form action="#">
                   <label for="files-table__header-search" class="input-wrapper">
@@ -32,8 +32,8 @@
             </div>
           </div>
           <div class="files-table__header-item arrow">
-            <p>שם הקובץ</p>
-            <div class="files-table__header-item-dropdown active">
+            <p (click)="sortBy('filename')">שם הקובץ</p>
+            <div class="files-table__header-item-dropdown">
               <div class="files-table__header-item__dropdown-body">
                 <form action="#">
                   <label for="files-table__header-search" class="input-wrapper">
@@ -56,8 +56,8 @@
             </div>
           </div>
           <div class="files-table__header-item arrow">
-            <p>תאריך יצירה</p>
-            <div class="files-table__header-item-dropdown active">
+            <p (click)="sortBy('year')">תאריך יצירה</p>
+            <div class="files-table__header-item-dropdown">
               <div class="files-table__header-item__dropdown-body">
                 <form action="#">
                   <label for="files-table__header-search" class="input-wrapper input-wrapper_date">
@@ -68,8 +68,8 @@
             </div>
           </div>
           <div class="files-table__header-item arrow">
-            <p>שם המחבר</p>
-            <div class="files-table__header-item-dropdown active">
+            <p (click)="sortBy('contactname')">שם המחבר</p>
+            <div class="files-table__header-item-dropdown">
               <div class="files-table__header-item__dropdown-body">
                 <form action="#">
                   <label for="files-table__header-search" class="input-wrapper">
@@ -97,253 +97,25 @@
         </div>
         <div class="files-table__body">
           <ul class="files-table__list">
-            <li class="files-table__list-item">
+            <li class="files-table__list-item" *ngFor="let objectItem of objectItems">
               <div class="files-table__list-item-column">
-                <div class="files-table__list-item-type word">
-                  <p>תמונה / שרטוט</p>
+                <div class="files-table__list-item-type" [ngClass]="objectItem.type">
+                  <p>{{objectItem.type}}</p>
                 </div>
               </div>
               <div class="files-table__list-item-column">
                 <div class="files-table__list-item-name">
-                  <a href="#">תמונה שילוט</a>
+                  <a href="#">{{objectItem.filename}}</a>
                 </div>
               </div>
               <div class="files-table__list-item-column">
                 <div class="files-table__list-item-date">
-                  <p>14.03.2018</p>
+                  <p>{{objectItem.year}}</p>
                 </div>
               </div>
               <div class="files-table__list-item-column">
                 <div class="files-table__list-item-author">
-                  <p>תמונה שילוט</p>
-                </div>
-              </div>
-              <div class="files-table__list-item-column">
-                <div class="files-table__list-item-actions">
-                  <button>
-                    <img src="/assets/img/Icon-md-eye.svg" alt="">
-                  </button>
-                  <button>
-                    <img src="/assets/img/download.svg" alt="">
-                  </button>
-                  <button>
-                    <img src="/assets/img/material-edit.svg" alt="">
-                  </button>
-                  <button>
-                    <img src="/assets/img/trash-can.svg" alt="">
-                  </button>
-                </div>
-              </div>
-            </li>
-            <li class="files-table__list-item">
-              <div class="files-table__list-item-column">
-                <div class="files-table__list-item-type pdf">
-                  <p>תמונה / שרטוט</p>
-                </div>
-              </div>
-              <div class="files-table__list-item-column">
-                <div class="files-table__list-item-name">
-                  <a href="#">תמונה שילוט</a>
-                </div>
-              </div>
-              <div class="files-table__list-item-column">
-                <div class="files-table__list-item-date">
-                  <p>20.03.2018</p>
-                </div>
-              </div>
-              <div class="files-table__list-item-column">
-                <div class="files-table__list-item-author">
-                  <p>תמונה שילוט</p>
-                </div>
-              </div>
-              <div class="files-table__list-item-column">
-                <div class="files-table__list-item-actions">
-                  <button>
-                    <img src="/assets/img/Icon-md-eye.svg" alt="">
-                  </button>
-                  <button>
-                    <img src="/assets/img/download.svg" alt="">
-                  </button>
-                  <button>
-                    <img src="/assets/img/material-edit.svg" alt="">
-                  </button>
-                  <button>
-                    <img src="/assets/img/trash-can.svg" alt="">
-                  </button>
-                </div>
-              </div>
-            </li>
-            <li class="files-table__list-item">
-              <div class="files-table__list-item-column">
-                <div class="files-table__list-item-type img">
-                  <p>טופס</p>
-                </div>
-              </div>
-              <div class="files-table__list-item-column">
-                <div class="files-table__list-item-name">
-                  <a href="#">ביטול קבלה</a>
-                </div>
-              </div>
-              <div class="files-table__list-item-column">
-                <div class="files-table__list-item-date">
-                  <p>14.03.2018</p>
-                </div>
-              </div>
-              <div class="files-table__list-item-column">
-                <div class="files-table__list-item-author">
-                  <p>ביטול קבלה</p>
-                </div>
-              </div>
-              <div class="files-table__list-item-column">
-                <div class="files-table__list-item-actions">
-                  <button>
-                    <img src="/assets/img/Icon-md-eye.svg" alt="">
-                  </button>
-                  <button>
-                    <img src="/assets/img/download.svg" alt="">
-                  </button>
-                  <button>
-                    <img src="/assets/img/material-edit.svg" alt="">
-                  </button>
-                  <button>
-                    <img src="/assets/img/trash-can.svg" alt="">
-                  </button>
-                </div>
-              </div>
-            </li>
-            <li class="files-table__list-item">
-              <div class="files-table__list-item-column">
-                <div class="files-table__list-item-type folder">
-                  <p>אישור / תעודה</p>
-                </div>
-              </div>
-              <div class="files-table__list-item-column">
-                <div class="files-table__list-item-name">
-                  <a href="#">אישור מסירה של דואר ר…</a>
-                </div>
-              </div>
-              <div class="files-table__list-item-column">
-                <div class="files-table__list-item-date">
-                  <p>18.02.2018</p>
-                </div>
-              </div>
-              <div class="files-table__list-item-column">
-                <div class="files-table__list-item-author">
-                  <p>אישור מסירה של דואר ר…</p>
-                </div>
-              </div>
-              <div class="files-table__list-item-column">
-                <div class="files-table__list-item-actions">
-                  <button>
-                    <img src="/assets/img/Icon-md-eye.svg" alt="">
-                  </button>
-                  <button>
-                    <img src="/assets/img/download.svg" alt="">
-                  </button>
-                  <button>
-                    <img src="/assets/img/material-edit.svg" alt="">
-                  </button>
-                  <button>
-                    <img src="/assets/img/trash-can.svg" alt="">
-                  </button>
-                </div>
-              </div>
-            </li>
-            <li class="files-table__list-item">
-              <div class="files-table__list-item-column">
-                <div class="files-table__list-item-type pdf">
-                  <p>מכתב</p>
-                </div>
-              </div>
-              <div class="files-table__list-item-column">
-                <div class="files-table__list-item-name">
-                  <a href="#">זכאות להנחה</a>
-                </div>
-              </div>
-              <div class="files-table__list-item-column">
-                <div class="files-table__list-item-date">
-                  <p>14.03.2018</p>
-                </div>
-              </div>
-              <div class="files-table__list-item-column">
-                <div class="files-table__list-item-author">
-                  <p>זכאות להנחה</p>
-                </div>
-              </div>
-              <div class="files-table__list-item-column">
-                <div class="files-table__list-item-actions">
-                  <button>
-                    <img src="/assets/img/Icon-md-eye.svg" alt="">
-                  </button>
-                  <button>
-                    <img src="/assets/img/download.svg" alt="">
-                  </button>
-                  <button>
-                    <img src="/assets/img/material-edit.svg" alt="">
-                  </button>
-                  <button>
-                    <img src="/assets/img/trash-can.svg" alt="">
-                  </button>
-                </div>
-              </div>
-            </li>
-            <li class="files-table__list-item">
-              <div class="files-table__list-item-column">
-                <div class="files-table__list-item-type folder">
-                  <p>אישור / תעודה</p>
-                </div>
-              </div>
-              <div class="files-table__list-item-column">
-                <div class="files-table__list-item-name">
-                  <a href="#">אישור מסירה של דואר ר…</a>
-                </div>
-              </div>
-              <div class="files-table__list-item-column">
-                <div class="files-table__list-item-date">
-                  <p>18.02.2018</p>
-                </div>
-              </div>
-              <div class="files-table__list-item-column">
-                <div class="files-table__list-item-author">
-                  <p>אישור מסירה של דואר ר…</p>
-                </div>
-              </div>
-              <div class="files-table__list-item-column">
-                <div class="files-table__list-item-actions">
-                  <button>
-                    <img src="/assets/img/Icon-md-eye.svg" alt="">
-                  </button>
-                  <button>
-                    <img src="/assets/img/download.svg" alt="">
-                  </button>
-                  <button>
-                    <img src="/assets/img/material-edit.svg" alt="">
-                  </button>
-                  <button>
-                    <img src="/assets/img/trash-can.svg" alt="">
-                  </button>
-                </div>
-              </div>
-            </li>
-            <li class="files-table__list-item">
-              <div class="files-table__list-item-column">
-                <div class="files-table__list-item-type pdf">
-                  <p>מכתב</p>
-                </div>
-              </div>
-              <div class="files-table__list-item-column">
-                <div class="files-table__list-item-name">
-                  <a href="#">זכאות להנחה</a>
-                </div>
-              </div>
-              <div class="files-table__list-item-column">
-                <div class="files-table__list-item-date">
-                  <p>14.03.2018</p>
-                </div>
-              </div>
-              <div class="files-table__list-item-column">
-                <div class="files-table__list-item-author">
-                  <p>זכאות להנחה</p>
+                  <p>{{objectItem.contactname}}</p>
                 </div>
               </div>
               <div class="files-table__list-item-column">
