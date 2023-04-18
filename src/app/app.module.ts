@@ -11,6 +11,7 @@ import { MaterialDesignModule } from './material-design/material-design.module';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     NavbarComponent,
     SearchBarComponent,
     ModalComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
