@@ -7,6 +7,9 @@ import { ObjectItem } from 'src/app/model/objectItem';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent {
+  activeSort: string = "";
+  ascOrder: number = 1;
+
   objectItems: ObjectItem[] = [
     {
       type: "pdf",
@@ -41,9 +44,16 @@ export class SearchComponent {
   ];
 
   sortBy(by: string) {
+    if (this.activeSort == by) {
+      this.ascOrder *= -1;
+    } else {
+      this.activeSort = by;
+      this.ascOrder = 1;
+    }
+
     this.objectItems.sort((a, b) => {
-      if (a[by] < b[by]) return -1;
-      if (a[by] > b[by]) return 1;
+      if (a[by] < b[by]) return -(this.ascOrder);
+      if (a[by] > b[by]) return this.ascOrder;
       return 0;
     });
   }
