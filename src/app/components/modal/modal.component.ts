@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import { MenuItem, ServerMenuItem } from 'src/app/model/menuItem';
 
 @Component({
@@ -31,7 +32,7 @@ export class ModalComponent {
     }
   ]`;
 
-  constructor() {
+  constructor(public dialogRef: MatDialogRef<ModalComponent>,) {
     this.menu = JSON.parse(this.serverReply);
     const localMenu = this.getFromServerMenuArray(false, "ourId");
     this.rootMenu = this.createMenuArray(localMenu);
@@ -44,11 +45,16 @@ export class ModalComponent {
 
   //define your method
   selectMenu(selectedMenu: MenuItem) {
-    // this.activeMenu = selectedMenu;
     this.rootMenu.map(m => {
       m.children.map(sm=> {
         sm.children = [];
       });
+    });
+
+    this.dialogRef.close({
+      action: 'select',
+      id: selectedMenu.objectId,
+      name: selectedMenu.name
     });
   }
 

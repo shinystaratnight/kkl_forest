@@ -10,9 +10,16 @@ import { ModalComponent } from '../modal/modal.component';
 export class NavbarComponent {
   constructor(private modal: MatDialog) {}
   openDialog() {
-    this.modal.open(ModalComponent, {
+    const dialogRef = this.modal.open(ModalComponent, {
       maxWidth: '95vw',
       maxHeight: '95vh',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result.action == 'select') {
+        const id = result.id;
+        const name = result.name;
+      }
     });
   }
 }
