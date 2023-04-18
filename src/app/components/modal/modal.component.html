@@ -6,7 +6,9 @@
       <div class="modal-card-item" *ngFor="let menuItemLevel2 of menuItem.children">
         <div (click)="openSubmenu(menuItemLevel2, 2)">Level 2  {{menuItemLevel2.name}}</div>
         <ul class="modal-card-item-list active" *ngIf="menuItemLevel2.children.length > 0">
-          <li *ngFor="let menuItemLevel3 of menuItem.children"><a href="#">Level 3  {{menuItemLevel3.name}}</a></li>
+          <li *ngFor="let menuItemLevel3 of menuItem.children">
+            <a (click)="selectMenu(menuItemLevel3)">Level 3  {{menuItemLevel3.name}}</a>
+          </li>
         </ul>
       </div>
     </div>

@@ -39,24 +39,21 @@ export class ModalComponent {
       const serverMenuArray = this.getFromServerMenuArray(false, menu.objectId);
       const newMenuArray = this.createMenuArray(serverMenuArray);
       menu.children = newMenuArray;
-      menu.menuLevelIndex = 2;
     })
   };
 
   //define your method
-  clickEvent($event: any) {
-    this.toggle = !this.toggle;
-    this.toggle2 = false;
-    console.log(this.toggle);
-  }
-
-  clickEvent2($event: any) {
-    this.toggle2 = !this.toggle2;
-    console.log(this.toggle2);
+  selectMenu(selectedMenu: MenuItem) {
+    // this.activeMenu = selectedMenu;
+    this.rootMenu.map(m => {
+      m.children.map(sm=> {
+        sm.children = [];
+      });
+    });
   }
 
   openSubmenu(menuItemObject: MenuItem, menuLevelIndex: number) {
-    console.log("menuItem: ", menuItemObject);
+
     if(menuItemObject.children.length > 0) {
       menuItemObject.children = [];
     } else {
@@ -68,8 +65,6 @@ export class ModalComponent {
           childrenObject["array"] = [];
         }
       });
-      console.log("our children in one place: ", allChildren);
-      console.log("our children in one place: ", this.rootMenu.keys[0]);
       menuItemObject.children = newMenuArray;
       menuItemObject.menuLevelIndex = menuLevelIndex;
     }
