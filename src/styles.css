@@ -1,0 +1,44 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-toolbar {
+  background: #fff;
+  color: #000;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  box-shadow: 0px 3px 6px #00000029;
+}
+
+.cdk-overlay-pane {
+  overflow: initial !important;
+  max-height: none !important;
+  max-width: 100% !important;
+}
+.mat-mdc-dialog-content {
+  max-height: none !important;
+}
+
+.cdk-global-overlay-wrapper {
+  padding: 60px;
+  overflow: auto;
+  box-sizing: border-box;
+  pointer-events: initial !important;
+  align-items: flex-start !important;
+}
+.mdc-dialog__surface {
+  overflow: visible !important;
+}
+
+@media (max-width: 600px) {
+  .cdk-global-overlay-wrapper {
+    padding: 30px;
+  }
+}
