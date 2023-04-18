@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { MenuItem, ServerMenuItem } from 'src/app/model/menuItem';
 // @ts-nocheck
 @Component({
@@ -20,7 +21,7 @@ export class HomeComponent {
         "doc_year": "0",
         "attr_sub_type": ""
     },
-  
+
     {
       "author_name": "",
       "r_object_id": "0b759c3580fbee12",
@@ -28,13 +29,19 @@ export class HomeComponent {
       "object_name": "אקולוגיה, סביבה ויער בישראל",
       "doc_year": "0",
       "attr_sub_type": ""
-  }
+    }
   ]`;
-  constructor() {
+
+  constructor(private router: Router) {
     this.menu = JSON.parse(this.serverReply);
     const localMenu = this.getFromServerMenuArray(false, "ourId");
     this.rootMenu = this.createMenuArray(localMenu);
   };
+
+  searchFn(obj) {
+    this.router.navigateByUrl(`/search?keyword=${obj.keyword}&category=${obj.id}`);
+  }
+
   //define your method
   clickEvent($event: any) {
     this.toggle = !this.toggle;
@@ -48,6 +55,7 @@ export class HomeComponent {
   }
 
   openSubmenu(menuItemObject: MenuItem, menuLevelIndex: number) {
+    console.log("menuItem: ", menuItemObject);
     if(menuItemObject.children.length > 0) {
       menuItemObject.children = [];
     } else {
@@ -97,14 +105,14 @@ export class HomeComponent {
 
   findProperties<T>(obj: T, propName: string, menuLevelIndex: number): Array<T[keyof T]> {
     const results: any [] = [];
-  
+
     // Recursive function to search for properties
     function search(obj: any) {
       // Check if the current object is null or undefined
       if (!obj) {
         return;
       }
-  
+
       // Check if the current object has the desired property
       if (obj.hasOwnProperty(propName)) {
         results.push({array: obj[propName], menuLevelIndex: obj["menuLevelIndex"]});
@@ -112,7 +120,7 @@ export class HomeComponent {
           obj[propName] = [];
         }
       }
-  
+
       // Recursively search the sub-properties of the current object
       for (let key in obj) {
         if (typeof obj[key] === 'object') {
@@ -120,11 +128,11 @@ export class HomeComponent {
         }
       }
     }
-  
+
     // Start the search with the input object
     search(obj);
-  
+
     return results;
   }
-  
+
 }

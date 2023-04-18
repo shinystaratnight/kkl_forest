@@ -1,64 +1,37 @@
 <div class="search-main-container">
   <div class="search-main-body">
     <div class="search-archive">
-      <button type="button" class="search-archive__button">
-        ארכיון היער
+      <button type="button" class="search-archive__button" (click)="toggleMenu()">
+        {{activeMenu.name || "ארכיון היער" }}
       </button>
 
-      <div class="search-archive__dropdown active">
+      <div class="search-archive__dropdown" [ngClass]="{ active: toggle }">
         <div class="search-archive__dropdown-body">
-          <p class="search-archive__dropdown-title">
-            כל הקטגוריות
-          </p>
           <ul class="search-archive__dropdown-list">
-            <li class="search-archive__dropdown-list-item active">
-              <p>אקולוגיה וסביבה</p>
+            <li class="search-archive__dropdown-list-item active" *ngFor="let menuItem of rootMenu">
+              <p (click)="openSubmenu(menuItem, 1)">{{menuItem.name}}</p>
 
               <div class="search-archive__dropdown-submenu">
-                <ul class="search-archive__dropdown-submenu-list">
-                  <li class="search-archive__dropdown-submenu-item">
-                    שטחים פתוחים בישראל
-                  </li>
-                  <li class="search-archive__dropdown-submenu-item">
-                    שטחים פתוחים בישראל
-                  </li>
-                  <li class="search-archive__dropdown-submenu-item">
-                    שטחים פתוחים בישראל
-                  </li>
-                  <li class="search-archive__dropdown-submenu-item">
-                    שטחים פתוחים בישראל
-                  </li>
-                  <li class="search-archive__dropdown-submenu-item">
-                    שטחים פתוחים בישראל
+                <ul class="search-archive__dropdown-submenu-list" *ngIf="menuItem.children.length > 0">
+                  <li class="search-archive__dropdown-submenu-item" *ngFor="let menuItemLevel2 of menuItem.children">
+                    <p (click)="openSubmenu(menuItemLevel2, 2)">{{menuItemLevel2.name}}</p>
+
+                    <div class="search-archive__dropdown-submenu">
+                      <ul class="search-archive__dropdown-submenu-list" *ngIf="menuItemLevel2.children.length > 0">
+                        <li class="search-archive__dropdown-submenu-item" *ngFor="let menuItemLevel3 of menuItemLevel2.children">
+                          <a (click)="selectMenu(menuItemLevel3)">{{menuItemLevel3.name}}</a>
+                        </li>
+                      </ul>
+                    </div>
                   </li>
                 </ul>
               </div>
-            </li>
-            <li class="search-archive__dropdown-list-item">
-              <p>אקולוגיה וסביבה</p>
-
-              <div class="search-archive__dropdown-submenu"></div>
-            </li>
-            <li class="search-archive__dropdown-list-item">
-              <p>אקולוגיה וסביבה</p>
-
-              <div class="search-archive__dropdown-submenu"></div>
-            </li>
-            <li class="search-archive__dropdown-list-item">
-              <p>אקולוגיה וסביבה</p>
-
-              <div class="search-archive__dropdown-submenu"></div>
-            </li>
-            <li class="search-archive__dropdown-list-item">
-              <p>אקולוגיה וסביבה</p>
-
-              <div class="search-archive__dropdown-submenu"></div>
             </li>
           </ul>
         </div>
       </div>
     </div>
-    
+
     <div class="search">
       <div class="search-container">
         <input
@@ -67,17 +40,20 @@
           id="search-input"
           placeholder="הקלד/י מילת חיפוש"
           autocomplete="off"
+          [(ngModel)]="keyword"
         />
-        <mat-icon svgIcon="search" class="search-icon"></mat-icon>
+        <div (click)="searchFn()">
+          <mat-icon svgIcon="search" class="search-icon"></mat-icon>
+        </div>
       </div>
     </div>
-  
+
     <div class="search-filters-button-wrapper">
       <button type="button" class="search-filters-button active">
         <img src="/assets/img/double-arrow-up.svg" alt="">
       </button>
     </div>
-  
+
     <div class="search-filters active">
       <ul class="search-filters__list">
         <li class="search-filters__item">
@@ -112,5 +88,5 @@
       </ul>
     </div>
   </div>
-  
+
 </div>

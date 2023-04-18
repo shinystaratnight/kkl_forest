@@ -1,5 +1,5 @@
 <div class="hero-home">
-  <app-search-bar></app-search-bar>
+  <app-search-bar (searchObjects)="searchFn($event)"></app-search-bar>
 </div>
 
 <div class="wrapper">
@@ -14,31 +14,32 @@
     </div>
   </div> -->
 
-    <div class="home-buttons-block">
-      <div class="home-buttons-container" *ngFor="let menuItem of rootMenu">
-        <div class="card-button" (click)="openSubmenu(menuItem, 1)">
-          <div class="card-button-icon">
-            <mat-icon
-              svgIcon="home-card-icon-1"
-              class="home-card-icon"
-            ></mat-icon>
-          </div>
-          <div class="card-button-text">Level 1  {{menuItem.name}}</div>
+  <div class="home-buttons-block">
+    <div class="home-buttons-container" *ngFor="let menuItem of rootMenu">
+      <div class="card-button" (click)="openSubmenu(menuItem, 1)">
+        <div class="card-button-icon">
+          <mat-icon
+            svgIcon="home-card-icon-1"
+            class="home-card-icon"
+          ></mat-icon>
         </div>
-        <div class="card-button-menu-container active">
-          <ul class="card-button-menu-list active" *ngIf="menuItem.children.length > 0">
-            <li class="card-button-menu-item submenu" *ngFor="let menuItemLevel2 of menuItem.children">
-              <a (click)="openSubmenu(menuItemLevel2, 2)" class="pointer">Level 2  {{menuItemLevel2.name}} ></a>
-              <ul class="card-button-menu-item-submenu active2" *ngIf="menuItemLevel2.children.length > 0">
-                <li class="submenu-item" *ngFor="let menuItemLevel3 of menuItemLevel2.children">
-                  <a href="#">Level 3  {{menuItemLevel3.name}}</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
+        <div class="card-button-text">Level 1  {{menuItem.name}}</div>
+      </div>
+      <div class="card-button-menu-container active">
+        <ul class="card-button-menu-list active" *ngIf="menuItem.children.length > 0">
+          <li class="card-button-menu-item submenu" *ngFor="let menuItemLevel2 of menuItem.children">
+            <a (click)="openSubmenu(menuItemLevel2, 2)" class="pointer">Level 2  {{menuItemLevel2.name}} ></a>
+            <ul class="card-button-menu-item-submenu active2" *ngIf="menuItemLevel2.children.length > 0">
+              <li class="submenu-item" *ngFor="let menuItemLevel3 of menuItemLevel2.children">
+                <a href="#">Level 3  {{menuItemLevel3.name}}</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
     </div>
+  </div>
+
   <div class="container">
     <h2 class="buttons-block-header">ברוכים הבאים למאגר המידע של קק״ל</h2>
     <div class="home-buttons-block">
