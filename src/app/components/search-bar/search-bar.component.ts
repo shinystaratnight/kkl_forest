@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { MenuItem, ServerMenuItem } from 'src/app/model/menuItem';
 
 @Component({
@@ -9,9 +10,14 @@ import { MenuItem, ServerMenuItem } from 'src/app/model/menuItem';
 export class SearchBarComponent {
   toggle: boolean = false;
   toggle2: boolean = false;
+  toggle3: boolean = true;
   activeMenu: MenuItem;
   menu: any[] = [];
   rootMenu: MenuItem [] = [];
+  year: number;
+  contact: string = "";
+  type: string = "word";
+
   serverReply: string = `[
     {
         "author_name": "",
@@ -36,7 +42,12 @@ export class SearchBarComponent {
   @Output() searchObjects = new EventEmitter();
 
   searchFn() {
-    this.searchObjects.emit({keyword: this.keyword, id: this.activeMenu.objectId});
+    console.log(this.year, this.contact, this.type);
+    this.router.navigateByUrl(`/search?keyword=${this.keyword}&category=${this.activeMenu.objectId}&type=${this.type}&contact=${this.contact}&year=${this.year}`);
+  }
+
+  toggleSearch() {
+    this.toggle3 = !this.toggle3;
   }
 
   selectMenu(selectedMenu: MenuItem) {
@@ -48,7 +59,7 @@ export class SearchBarComponent {
     this.toggle = !this.toggle;
   }
 
-  constructor() {
+  constructor(private router: Router) {
     this.activeMenu = new MenuItem();
     this.menu = JSON.parse(this.serverReply);
     const localMenu = this.getFromServerMenuArray(false, "ourId");

@@ -49,12 +49,12 @@
     </div>
 
     <div class="search-filters-button-wrapper">
-      <button type="button" class="search-filters-button active">
+      <button type="button" class="search-filters-button active" (click)="toggleSearch()">
         <img src="/assets/img/double-arrow-up.svg" alt="">
       </button>
     </div>
 
-    <div class="search-filters active">
+    <div class="search-filters" [ngClass]="{ active: toggle3 }">
       <ul class="search-filters__list">
         <li class="search-filters__item">
           <label for="filter-1" class="search-filters__filter-wrapper">
@@ -63,10 +63,11 @@
         </li>
         <li class="search-filters__item">
           <label for="filter-2" class="search-filters__filter-wrapper search-filters__filter-wrapper_select">
-            <select name="" id="filter-2">
-              <option value="1" selected>1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
+            <select name="" [(ngModel)]="type" id="filter-2">
+              <option value="word" selected>Word</option>
+              <option value="pdf">Pdf</option>
+              <option value="folder">Folder</option>
+              <option value="img">Image</option>
             </select>
           </label>
         </li>
@@ -77,12 +78,12 @@
         </li>
         <li class="search-filters__item">
           <label for="filter-4" class="search-filters__filter-wrapper">
-            <input type="text" name="" placeholder="שנת חיבור" id="filter-4" class="search-filters__filter">
+            <input type="text" [(ngModel)]="year" name="" placeholder="שנת חיבור" id="filter-4" class="search-filters__filter">
           </label>
         </li>
         <li class="search-filters__item">
           <label for="filter-5" class="search-filters__filter-wrapper">
-            <input type="text" name="" placeholder="שם מחבר" id="filter-5" class="search-filters__filter">
+            <input type="text" [(ngModel)]="contact" name="" placeholder="שם מחבר" id="filter-5" class="search-filters__filter">
           </label>
         </li>
       </ul>

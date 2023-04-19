@@ -32,15 +32,15 @@ export class HomeComponent {
     }
   ]`;
 
-  constructor(private router: Router) {
+  constructor() {
     this.menu = JSON.parse(this.serverReply);
     const localMenu = this.getFromServerMenuArray(false, "ourId");
     this.rootMenu = this.createMenuArray(localMenu);
   };
 
-  searchFn(obj) {
-    this.router.navigateByUrl(`/search?keyword=${obj.keyword}&category=${obj.id}`);
-  }
+  // searchFn(obj) {
+    // this.router.navigateByUrl(`/search?keyword=${obj.keyword}&category=${obj.id}`);
+  // }
 
   //define your method
   clickEvent($event: any) {
