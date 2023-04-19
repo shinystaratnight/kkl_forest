@@ -17,6 +17,7 @@ export class SearchBarComponent {
   year: number;
   contact: string = "";
   type: string = "word";
+  years: number[] = [...Array(34).keys()].map(y => 1990 + y);
 
   serverReply: string = `[
     {

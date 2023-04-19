@@ -77,8 +77,10 @@
           </label>
         </li>
         <li class="search-filters__item">
-          <label for="filter-4" class="search-filters__filter-wrapper">
-            <input type="text" [(ngModel)]="year" name="" placeholder="שנת חיבור" id="filter-4" class="search-filters__filter">
+          <label for="filter-4" class="search-filters__filter-wrapper search-filters__filter-wrapper_select">
+            <select name="" [(ngModel)]="year" id="filter-4">
+              <option [value]="y" *ngFor="let y of years">{{y}}</option>
+            </select>
           </label>
         </li>
         <li class="search-filters__item">
