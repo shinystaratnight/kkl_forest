@@ -158,11 +158,11 @@ input:focus {
   width: 28px;
   flex: 0 0 28px;
   height: auto;
-  transform: rotate(180deg);
+  /* transform: rotate(180deg); */
   transition: transform 0.3s ease 0s;
 }
 .search-filters-button.active img {
-  transform: rotate(0);
+  transform: rotate(180deg);
 }
 .search-filters.active {
   display: block;

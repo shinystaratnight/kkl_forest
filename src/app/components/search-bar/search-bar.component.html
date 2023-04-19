@@ -49,7 +49,7 @@
     </div>
 
     <div class="search-filters-button-wrapper">
-      <button type="button" class="search-filters-button active" (click)="toggleSearch()">
+      <button type="button" class="search-filters-button" [ngClass]="{ active: !toggle3 }" (click)="toggleSearch()">
         <img src="/assets/img/double-arrow-up.svg" alt="">
       </button>
     </div>
