@@ -10,7 +10,7 @@ import { MenuItem, ServerMenuItem } from 'src/app/model/menuItem';
 export class SearchBarComponent {
   toggle: boolean = false;
   toggle2: boolean = false;
-  toggle3: boolean = true;
+  toggle3: boolean = false;
   activeMenu: MenuItem;
   menu: any[] = [];
   rootMenu: MenuItem [] = [];
